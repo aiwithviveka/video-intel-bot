@@ -375,4 +375,4 @@ pip install --upgrade yt-dlp
 
 ---
 
-*Built for CareerByteCode — Learning Made Simple 🚀*
+*Built for Live Session — Learning Made Simple 🚀*

@@ -7,6 +7,7 @@ Handles: YouTube download via yt-dlp, local file processing,
 import asyncio
 import subprocess
 import json
+import glob
 from pathlib import Path
 
 
@@ -46,6 +47,11 @@ class VideoIngestor:
             url
         ]
         await self._run(cmd_video)
+
+        # yt-dlp may change extension (e.g. video.mp4.webm), find actual file
+        actual_videos = glob.glob(str(self.work_dir / "video.*"))
+        if actual_videos:
+            video_path = Path(actual_videos[0])
 
         # Extract keyframes (1 per 30 seconds)
         await self._extract_frames(video_path)
